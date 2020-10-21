@@ -1,15 +1,17 @@
 import nextConnect from "next-connect";
 import middleware from "../../middleware/database";
+import { IncomingDbMessage, NextServerResponse } from "../../middleware/database-request";
 var { nanoid } = require("nanoid");
 
 const handler = nextConnect();
-const collectionName = "Ingredients";
+const collectionName: string = "Ingredients";
 handler.use(middleware);
 
-handler.get(async (req, res) => {
+handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
   await req.db
     .collection(collectionName)
     .find({})
+  //   .find({})
     .toArray(function (err, ingredients) {
       if (err) throw err;
 
@@ -17,11 +19,13 @@ handler.get(async (req, res) => {
     });
 });
 
-handler.put(async (req, res) => {
+handler.put(async (req: IncomingDbMessage, res: any) => {
   res.setHeader("Content-Type", "application/json");
   const content = req.body;
 
-  if (!content) return res.status(400).send("You must write something");
+  if (!content) {    
+    return res.status(400).send("Write");    
+  }
 
   const ingredient = {
     _id: nanoid(),
