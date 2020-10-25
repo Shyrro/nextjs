@@ -11,7 +11,6 @@ handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
   await req.db
     .collection(collectionName)
     .find({})
-  //   .find({})
     .toArray(function (err, ingredients) {
       if (err) throw err;
 
