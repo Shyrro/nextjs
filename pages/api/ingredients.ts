@@ -7,8 +7,7 @@ const handler = nextConnect();
 const collectionName: string = "Ingredients";
 handler.use(middleware);
 
-handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
-  console.log(process.env.MONGODB_URL);
+handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {  
   await req.db
     .collection(collectionName)
     .find({})

@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import nextConnect from "next-connect";
 
 const DATABASE_NAME = "FoodPlanner";
-const CONNECTION_URL = process.env.MONGODB_URL;
+const CONNECTION_URL = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mycluster.g0vxx.mongodb.net/FoodPlanner?retryWrites=true&w=majority`;
 
 const client = new MongoClient(CONNECTION_URL, {
   useNewUrlParser: true,
