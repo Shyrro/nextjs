@@ -10,8 +10,7 @@ handler.use(middleware);
 handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
   await req.db
     .collection(collectionName)
-    .find({})
-  //   .find({})
+    .find({})  
     .toArray(function (err, recipees) {
       if (err) throw err;
 

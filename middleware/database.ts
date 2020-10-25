@@ -2,8 +2,7 @@ import { MongoClient } from "mongodb";
 import nextConnect from "next-connect";
 
 const DATABASE_NAME = "FoodPlanner";
-const CONNECTION_URL =
-  "mongodb+srv://mongodb_admin:cZEdCcpfkOaolu9A@mycluster.g0vxx.mongodb.net/FoodPlanner?retryWrites=true&w=majority";
+const CONNECTION_URL = process.env.MONGODB_URL;
 
 const client = new MongoClient(CONNECTION_URL, {
   useNewUrlParser: true,
