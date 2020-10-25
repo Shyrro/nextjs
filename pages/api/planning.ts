@@ -6,17 +6,17 @@ import {
 } from "../../middleware/database-request";
 
 const handler = nextConnect();
-const collectionName: string = "Ingredients";
+const collectionName: string = "Planning";
 handler.use(middleware);
 
 handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
   await req.db
     .collection(collectionName)
     .find({})
-    .toArray(function (err, ingredients) {
+    .toArray(function (err, planning) {
       if (err) throw err;
 
-      res.send(ingredients);
+      res.send(planning);
     });
 });
 
@@ -35,7 +35,6 @@ handler.put(async (req: IncomingDbMessage, res: any) => {
       { $set: content },
       { upsert: true }
     );
-
   return res.send(content._id);
 });
 

@@ -32,7 +32,7 @@ handler.put(async (req: IncomingDbMessage, res: any) => {
     .collection(collectionName)
     .updateOne(
       { _id: content._id },
-      { $set: { name: content.name, unit: content.unit } },
+      { $set: content },
       { upsert: true }
     );
   return res.send(content._id);
