@@ -9,7 +9,8 @@ const handler = nextConnect();
 const collectionName: string = "Planning";
 handler.use(middleware);
 
-handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
+handler.get(async (req: IncomingDbMessage, res: any) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   await req.db
     .collection(collectionName)
     .find({})
@@ -22,6 +23,7 @@ handler.get(async (req: IncomingDbMessage, res: NextServerResponse) => {
 
 handler.put(async (req: IncomingDbMessage, res: any) => {
   res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   const content = req.body;
 
   if (!content) {
