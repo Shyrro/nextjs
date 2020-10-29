@@ -22,8 +22,9 @@ handler.get(async (req: IncomingDbMessage, res: any) => {
 });
 
 handler.put(async (req: IncomingDbMessage, res: any) => {
-  res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Content-Type", "application/json");
+  
   const content = req.body;
 
   if (!content) {
