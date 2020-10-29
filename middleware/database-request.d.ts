@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Db } from "mongodb";
 
-interface IncomingDbMessage {
+interface IncomingDbMessage implements IncomingMessage {
   db: Db;
   body: any;
 }
