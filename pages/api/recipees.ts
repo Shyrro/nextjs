@@ -1,5 +1,6 @@
 import nextConnect from "next-connect";
 import middleware from "../../middleware/database";
+import cors from "cors";
 import {
   IncomingDbMessage,
   NextServerResponse,
@@ -8,6 +9,7 @@ import {
 const handler = nextConnect();
 const collectionName: string = "Recipees";
 handler.use(middleware);
+handler.use(cors());
 
 handler.get(async (req: IncomingDbMessage, res: any) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

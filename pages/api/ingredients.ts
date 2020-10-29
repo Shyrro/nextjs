@@ -1,5 +1,6 @@
 import nextConnect from "next-connect";
 import middleware from "../../middleware/database";
+import cors from "cors";
 import {
   IncomingDbMessage,
   NextServerResponse,
@@ -8,9 +9,9 @@ import {
 const handler = nextConnect();
 const collectionName: string = "Ingredients";
 handler.use(middleware);
+handler.use(cors());
 
-handler.get(async (req: IncomingDbMessage, res: any) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+handler.get(async (req: IncomingDbMessage, res: any) => {    
   await req.db
     .collection(collectionName)
     .find({})
@@ -21,10 +22,7 @@ handler.get(async (req: IncomingDbMessage, res: any) => {
     });
 });
 
-handler.post(async (req: IncomingDbMessage, res: any) => {  
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Content-Type", "application/json");
-  
+handler.put(async (req: IncomingDbMessage, res: any) => {      
   const content = req.body;
 
   if (!content) {

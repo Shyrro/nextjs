@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/mongodb": "^3.5.31",
+    "cors": "^2.8.5",
     "mongodb": "^3.6.2",
     "nanoid": "^3.1.12",
     "next": "9.5.4",

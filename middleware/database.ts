@@ -10,8 +10,10 @@ const client = new MongoClient(CONNECTION_URL, {
 });
 
 async function database(req, res, next) {
+  
   if (!client.isConnected())
     await client.connect().catch((err) => console.log(err));
+  
   req.dbClient = client;
   req.db = client.db(DATABASE_NAME);
 
